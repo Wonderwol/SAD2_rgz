@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Заявки</title>
+    <title>Просмотр заявок</title>
 </head>
 <body>
     <h1>Заявки</h1>
     <ul>
         {% for ticket in tickets %}
             <li>
-                <a href="{{ url_for('view_ticket', ticket_id=ticket.id) }}">{{ ticket.title }}</a>
-                {% if current_user.role == 'admin' %}
-                    <form method="POST" action="{{ url_for('delete_ticket', ticket_id=ticket.id) }}" style="display:inline;">
-                        <button type="submit">Удалить</button>
-                    </form>
-                {% endif %}
+                <a href="{{ url_for('view_ticket', ticket_id=ticket['id']) }}">{{ ticket['title'] }}</a>
             </li>
         {% endfor %}
     </ul>
-    <a href="{{ url_for('new_ticket') }}">Создать новую заявку</a>
+
+    <a href="{{ url_for('index') }}">На главную</a>
 </body>
 </html>
 
-       
 
 
 

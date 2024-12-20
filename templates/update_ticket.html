@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Обновить заявку</title>
+    <title>Редактирование заявки</title>
 </head>
 <body>
     <h1>Редактировать заявку</h1>
     <form method="POST">
-        <label for="title">Заголовок</label>
-        <input type="text" name="title" value="{{ ticket.title }}" required>
+        <label for="title">Название</label>
+        <input type="text" id="title" name="title" value="{{ ticket.title }}" required>
         <label for="description">Описание</label>
-        <textarea name="description" required>{{ ticket.description }}</textarea>
+        <textarea id="description" name="description" required>{{ ticket.description }}</textarea>
         <label for="status">Статус</label>
-        <select name="status">
-            <option value="new" {% if ticket.status == 'new' %}selected{% endif %}>Новая</option>
+        <select id="status" name="status" required>
+            <option value="open" {% if ticket.status == 'open' %}selected{% endif %}>Открыто</option>
             <option value="in_progress" {% if ticket.status == 'in_progress' %}selected{% endif %}>В работе</option>
-            <option value="closed" {% if ticket.status == 'closed' %}selected{% endif %}>Закрыта</option>
+            <option value="closed" {% if ticket.status == 'closed' %}selected{% endif %}>Закрыто</option>
         </select>
-        <button type="submit">Обновить</button>
+        <button type="submit">Сохранить</button>
     </form>
-    <a href="{{ url_for('view_ticket', ticket_id=ticket.id) }}">Отменить</a>
+    <a href="{{ url_for('view_tickets') }}">Вернуться к списку заявок</a>
 </body>
 </html>
+
+
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +7,23 @@
 </head>
 <body>
     <h1>Добро пожаловать, {{ current_user.username }}!</h1>
-    <a href="{{ url_for('new_ticket') }}">Создать заявку</a>
-    <a href="{{ url_for('view_tickets') }}">Просмотр заявок</a>
-    <a href="{{ url_for('logout') }}">Выйти</a>
+
+    <div>
+        <h2>Что хотите сделать?</h2>
+        <a href="{{ url_for('create_ticket') }}">
+            <button>Создать заявку</button>
+        </a>
+        <a href="{{ url_for('view_tickets') }}">
+            <button>Просмотреть заявки</button>
+        </a>
+    </div>
+
+    <a href="{{ url_for('logout') }}">
+        <button>Выйти</button>
+    </a>
 </body>
 </html>
+
+
 
 
