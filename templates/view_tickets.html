@@ -6,18 +6,32 @@
     <title>Просмотр заявок</title>
 </head>
 <body>
-    <h1>Заявки</h1>
+    <h1>Все заявки</h1>
+
     <ul>
-        {% for ticket in tickets %}
-            <li>
-                <a href="{{ url_for('view_ticket', ticket_id=ticket['id']) }}">{{ ticket['title'] }}</a>
-            </li>
-        {% endfor %}
+    {% for ticket in tickets %}
+        <li>
+            <a href="{{ url_for('view_ticket', ticket_id=ticket['id']) }}">{{ ticket['title'] }}</a>
+
+            {% if ticket['author'] == current_user.username or current_user.is_admin %}
+                <a href="{{ url_for('update_ticket', ticket_id=ticket['id']) }}">Редактировать</a>
+            {% endif %}
+
+            {% if ticket['author'] == current_user.username or current_user.is_admin %}
+                <form method="POST" action="{{ url_for('delete_ticket', ticket_id=ticket['id']) }}" style="display:inline;">
+                    <button type="submit">Удалить</button>
+                </form>
+            {% endif %}
+        </li>
+    {% endfor %}
     </ul>
 
-    <a href="{{ url_for('index') }}">На главную</a>
+    <a href="{{ url_for('index') }}">Главная</a>
 </body>
 </html>
+
+
+
 
 
 

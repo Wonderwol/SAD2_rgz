@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Редактирование заявки</title>
 </head>
 <body>
-    <h1>Редактировать заявку</h1>
+    <h1>Редактирование заявки</h1>
+
     <form method="POST">
-        <label for="title">Название</label>
-        <input type="text" id="title" name="title" value="{{ ticket.title }}" required>
-        <label for="description">Описание</label>
-        <textarea id="description" name="description" required>{{ ticket.description }}</textarea>
-        <label for="status">Статус</label>
-        <select id="status" name="status" required>
-            <option value="open" {% if ticket.status == 'open' %}selected{% endif %}>Открыто</option>
-            <option value="in_progress" {% if ticket.status == 'in_progress' %}selected{% endif %}>В работе</option>
-            <option value="closed" {% if ticket.status == 'closed' %}selected{% endif %}>Закрыто</option>
-        </select>
-        <button type="submit">Сохранить</button>
+        <label for="title">Заголовок:</label>
+        <input type="text" id="title" name="title" value="{{ ticket['title'] }}" required><br><br>
+
+        <label for="description">Описание:</label>
+        <textarea id="description" name="description" required>{{ ticket['description'] }}</textarea><br><br>
+
+        <button type="submit">Сохранить изменения</button>
     </form>
-    <a href="{{ url_for('view_tickets') }}">Вернуться к списку заявок</a>
+
+    <br>
+    <a href="{{ url_for('view_tickets') }}">Назад к заявкам</a>
 </body>
 </html>
+
 
 
 

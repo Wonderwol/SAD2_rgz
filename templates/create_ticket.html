@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание заявки</title>
+</head>
+<body>
+    <h1>Создание заявки</h1>
+
+    <form method="POST">
+        <div>
+            <label for="title">Заголовок</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+            <label for="description">Описание</label>
+            <textarea id="description" name="description" required></textarea>
+        </div>
+        <button type="submit">Создать заявку</button>
+    </form>
+
+    <a href="{{ url_for('view_tickets') }}">Назад к заявкам</a>
+</body>
+</html>
+
+
+
+
+

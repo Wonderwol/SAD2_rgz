@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Заявка</title>
+    <title>Просмотр заявки</title>
 </head>
 <body>
-    <h1>Заявка: {{ ticket.title }}</h1>
-    <p>{{ ticket.description }}</p>
-    <p>Статус: {{ ticket.status }}</p>
-    {% if current_user.role == 'admin' %}
-        <a href="{{ url_for('update_ticket', ticket_id=ticket.id) }}">Редактировать</a>
-        <form method="POST" action="{{ url_for('delete_ticket', ticket_id=ticket.id) }}">
+    <h1>{{ ticket['title'] }}</h1>
+    <p>{{ ticket['description'] }}</p>
+
+    <!-- Ссылка на редактирование заявки -->
+    {% if ticket['author'] == current_user.username or current_user.is_admin %}
+        <a href="{{ url_for('update_ticket', ticket_id=ticket['id']) }}">Редактировать</a>
+    {% endif %}
+
+    <!-- Кнопка для удаления заявки -->
+    {% if ticket['author'] == current_user.username or current_user.is_admin %}
+        <form method="POST" action="{{ url_for('delete_ticket', ticket_id=ticket['id']) }}">
             <button type="submit">Удалить</button>
         </form>
     {% endif %}
+
+    <br>
     <a href="{{ url_for('view_tickets') }}">Назад к заявкам</a>
 </body>
 </html>
+
 
 
