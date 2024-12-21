@@ -29,4 +29,5 @@ jobs:
           pip install bandit  # Установка дополнительных пакетов
 
       - name: Run security check
-         bandit -r . -x ./env/Lib/site-packages -x ./venv -x ./.git  # Исключение внутреннего кода и виртуальных окружений  # Проверка безопасности с bandit
+        run: |
+         bandit -r . -x ./env/Lib/site-packages -x ./venv -x ./.git  # Исключение внутреннего кода и виртуальных окружений  # Проверка безопасности с bandit  # Проверка безопасности с bandit
