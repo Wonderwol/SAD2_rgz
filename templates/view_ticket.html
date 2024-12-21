@@ -9,12 +9,10 @@
     <h1>{{ ticket['title'] }}</h1>
     <p>{{ ticket['description'] }}</p>
 
-    <!-- Ссылка на редактирование заявки -->
     {% if ticket['author'] == current_user.username or current_user.is_admin %}
         <a href="{{ url_for('update_ticket', ticket_id=ticket['id']) }}">Редактировать</a>
     {% endif %}
 
-    <!-- Кнопка для удаления заявки -->
     {% if ticket['author'] == current_user.username or current_user.is_admin %}
         <form method="POST" action="{{ url_for('delete_ticket', ticket_id=ticket['id']) }}">
             <button type="submit">Удалить</button>

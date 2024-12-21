@@ -8,8 +8,10 @@
 <body>
     <h1>Главная страница</h1>
 
-    {% if not current_user.is_admin %}
+    {% if current_user.role == 'user' %}
         <a href="{{ url_for('create_ticket') }}">Создать заявку</a>
+    {% elif current_user.role == 'admin' %}
+        <a href="{{ url_for('manage_users') }}">Выдать роли</a>
     {% endif %}
 
     <a href="{{ url_for('view_tickets') }}">Посмотреть заявки</a>

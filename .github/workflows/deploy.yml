@@ -1,0 +1,32 @@
+name: CI Pipeline
+
+on:
+
+  push:
+
+    branches:
+
+      - main
+
+jobs:
+
+  rgz:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.2'
+          
+      - name: Install dependencies
+        run: |
+          pip install bandit  # Установка дополнительных пакетов
+
+      - name: Run security check
+        run: bandit -r . -x ./env/Lib/site-packages  # Проверка безопасности с bandit
