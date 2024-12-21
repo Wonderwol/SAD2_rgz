@@ -21,8 +21,8 @@ class User(UserMixin):
 
 
 users = [
-    User(id=1, username='user1', password='password1', role='user'),
-    User(id=2, username='admin', password='adminpass', role='admin')
+    User(id=1, username='user1', password=os.getenv('USER1_PASSWORD'), role='user'),
+    User(id=2, username='admin', password=os.getenv('ADMIN_PASSWORD'), role='admin')
 ]
 
 
