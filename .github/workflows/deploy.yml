@@ -30,4 +30,4 @@ jobs:
 
       - name: Run security check
         run: |
-         bandit -r . -x ./venv -x ./.git --exclude ./venv/Lib/site-packages --skip B101,B110,B602,B603,B605,B607
+         bandit -r . -x ./venv -x ./.git --skip B101,B110,B602,B603,B605,B607
